@@ -22,8 +22,7 @@ initial_integrations = reduced_integrations(:,1);
 model_output = initial_integrations;
 for t=2:length(times)
     model_result = ABA_RateODE(kays(end),times(t),initial_integrations,kays(1:end-1));
-    [model_rows,model_columns] = size(model_result);
-    model_output(:,t) = model_result(model_rows,:)';
+    model_output(:,t) = model_result(end,:)';
 end
 
 %Plot model output
