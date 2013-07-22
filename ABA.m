@@ -28,7 +28,7 @@ end
 
 %Plot model output
 model_output = flipud(model_output);
-model_heatmap_data = flipud(fliplr((model_output)));
+model_heatmap_data = flipud(model_output);
 y_labels = 0:length(kays);
 hm1 = HeatMap(model_heatmap_data,'RowLabels',y_labels,'ColumnLabels',time_points,'Symmetric',false,'DisplayRange',1,'Colormap',colormap(flipud(gray)),'Standardize','none');
 addXLabel(hm1,'Time (h)');
@@ -37,7 +37,7 @@ addTitle(hm1,strcat(title,' Model'));
 plot(hm1,figure(1))
 
 %Plot input data
-input_heatmap_data = flipud(fliplr((integrations)));
+input_heatmap_data = flipud(integrations);
 y_labels = 0:length(kays);
 hm2 = HeatMap(input_heatmap_data,'RowLabels',y_labels,'ColumnLabels',time_points,'Symmetric',false,'DisplayRange',1,'Colormap',colormap(flipud(gray)),'Standardize','none');
 addXLabel(hm2,'Time (h)');
