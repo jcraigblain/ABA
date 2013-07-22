@@ -1,0 +1,11 @@
+MATLAB script to estimate pseudo-first order rate constants for individual steps in a primer extension reaction
+
+Takes:
+
+(i) a matrix of relative gel integrations (fraction of lane total) with increasing time left to right and increasing product length top to bottom (as it looks when you image it)
+
+(ii) a vector with the time points, units don't matter
+
+(iii) the min and max possible k values, the step size to scan between them and a title for the reaction
+
+Works by going step by step through the reaction (primer -> +1 and above, then primer -> +1 -> +2 and above, etc) and modeling the whole process with an ODE solver. For each steps it scans the range of values for the last rate constant and selects the one that gives the least squares error from the measured integrations. Sets that k value, then moves on to the next step.
