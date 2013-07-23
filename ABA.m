@@ -10,7 +10,7 @@ flipped_integrations = flipud(integrations); %primer now at top
 
 %for each product length n, add all integrations for >=n+1 into n+1 band
 %then fit a kay value for n->n+1
-kays=0;
+kays=[];
 [num_bands,num_timepoints] = size(flipped_integrations);
 for b=2:num_bands
     reduced_integrations = [flipped_integrations(1:b-1,:); sum(flipped_integrations(b:end,:),1)];
@@ -21,7 +21,7 @@ end
 initial_integrations = reduced_integrations(:,1);
 model_output = initial_integrations;
 for t=2:length(times)
-    model_result = ABA_RateODE(kays(end),times(t),initial_integrations,kays(1:end-1));
+    model_result = ABA_RateODE(kays,times(t),initial_integrations);
     model_output(:,t) = model_result(end,:)';
 end
 

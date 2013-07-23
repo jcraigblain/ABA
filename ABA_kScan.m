@@ -11,7 +11,7 @@ initial_integrations = integrations(:,1);
 for i=1:length(k_scan)
     test_k=k_scan(i);
     for j=2:length(time_points)
-        model = ABA_RateODE(test_k,time_points(j),initial_integrations, kays);
+        model = ABA_RateODE([kays test_k],time_points(j),initial_integrations);
         for k=1:size(model,2)
             r(i)=r(i)+(integrations(k,j)-model(end,k))^2;
         end
