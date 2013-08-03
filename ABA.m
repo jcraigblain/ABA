@@ -4,6 +4,12 @@ function kays = ABA(title, k0, kstep, kf, time_points, integrations)
 %increasing extension length bottom to top)
 %Fits a k value to each extension step one at a time
 
+%normalize gel lanes
+column_sums=sum(integrations,1);
+for i=1:size(integrations,1)
+   integrations(:,i)=integrations(:,i)/column_sums(i); 
+end
+
 times = time_points - time_points(1); %t0 now 0
 
 flipped_integrations = flipud(integrations); %primer now at top
