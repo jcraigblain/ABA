@@ -6,7 +6,7 @@ function kays = ABA(title, k0, kstep, kf, time_points, integrations)
 
 %normalize gel lanes
 column_sums=sum(integrations,1);
-for i=1:size(integrations,1)
+for i=1:size(integrations,2)
    integrations(:,i)=integrations(:,i)/column_sums(i); 
 end
 
